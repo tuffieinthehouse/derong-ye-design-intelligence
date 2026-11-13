@@ -10,13 +10,14 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0;
   color: var(--ink);
   background: var(--paper);
   font-family: "DM Sans", system-ui, sans-serif;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
@@ -75,7 +76,7 @@ button { font: inherit; }
 .tags { grid-column: 2; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; }
 .tags li { border: 1px solid currentColor; border-radius: 100px; padding: 7px 11px; font-size: 12px; }
 .cover-button { width: 100%; padding: 0; border: 0; background: #000; color: #fff; cursor: zoom-in; position: relative; overflow: hidden; text-align: left; }
-.cover-button img { width: 100%; aspect-ratio: 18/7; object-fit: cover; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .5s; }
+.cover-button img { width: 100%; height: auto; object-fit: contain; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .5s; }
 .cover-button:hover img { transform: scale(1.012); opacity: .86; }
 .cover-button span { position: absolute; right: 20px; bottom: 18px; background: var(--accent); border-radius: 100px; padding: 11px 15px; font-size: 12px; }
 .case-pages { padding-top: 14px; }
@@ -95,7 +96,7 @@ button { font: inherit; }
   .topbar { padding: 16px; }
   .topbar nav { gap: 14px; }
   .hero { padding: 90px 18px 28px; }
-  .hero h1 { font-size: 17vw; }
+  .hero h1 { font-size: 14vw; letter-spacing: -.065em; }
   .hero-bottom { grid-template-columns: 1fr; gap: 45px; }
   .application-label { margin-right: 40px; }
   .intro, .project, .closing { padding-left: 18px; padding-right: 18px; }
@@ -103,9 +104,15 @@ button { font: inherit; }
   .project-copy { grid-template-columns: 1fr; }
   .project h3, .project-lead, .tags { grid-column: 1; }
   .project h3 { margin-top: 25px; }
-  .cover-button img { aspect-ratio: 16/8; }
+  .cover-button img { height: auto; object-fit: contain; }
   .cover-button span { left: 10px; right: auto; bottom: 10px; }
   .closing-meta { display: grid; gap: 8px; }
+}
+
+@media (max-width: 430px) {
+  .topbar nav { gap: 12px; }
+  .topbar nav a { font-size: 12px; }
+  .hero-bottom > p { font-size: 19px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
